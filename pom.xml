@@ -3,11 +3,11 @@
   <parent>
     <groupId>com.zoomulus</groupId>
     <artifactId>zoomulus-parent</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
   </parent>
   <groupId>com.zoomulus</groupId>
   <artifactId>servers</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>servers</name>
   <description>Contains some standard servers and basic infrastructure for creating custom servers.</description>
   <dependencies>
