@@ -78,7 +78,7 @@ public abstract class HttpResponder
     
     public static FullHttpResponse createSuccessResponse()
     {
-        return createSuccessResponse("");
+        return createSuccessResponse(HttpResponseStatus.OK.reasonPhrase());
     }
     
     public static FullHttpResponse createSuccessResponse(final String payload)
@@ -88,7 +88,7 @@ public abstract class HttpResponder
     
     public static FullHttpResponse createResponse(final HttpResponseStatus status)
     {
-        return createResponse(status, "");
+        return createResponse(status, status.reasonPhrase());
     }
     
     public static FullHttpResponse createResponse(final HttpResponseStatus status, String payload)
