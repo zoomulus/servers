@@ -9,13 +9,14 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 import java.util.List;
 
-import lombok.extern.slf4j.Slf4j;
-
 import com.google.common.collect.Lists;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Slf4j
 public class BasicNettyServer implements Server
 {
+    private static Logger log = LoggerFactory.getLogger(BasicNettyServer.class);
+
     private final List<ServerConnector> connectors;
     private List<ChannelFuture> channels = Lists.newArrayList();
     private final EventLoopGroup masterGroup;

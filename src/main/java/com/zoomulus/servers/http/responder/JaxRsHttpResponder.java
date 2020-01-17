@@ -1,21 +1,20 @@
 package com.zoomulus.servers.http.responder;
 
+import com.google.common.collect.Sets;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpHeaders;
 import io.netty.handler.codec.http.HttpRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import java.util.List;
 import java.util.Set;
 
-import javax.inject.Inject;
-
-import lombok.extern.slf4j.Slf4j;
-
-import com.google.common.collect.Sets;
-
-@Slf4j
 public class JaxRsHttpResponder extends HttpResponder
 {
+    private static Logger log = LoggerFactory.getLogger(JaxRsHttpResponder.class);
+
     private final Set<Class<?>> responders = Sets.newConcurrentHashSet();
     
     @Inject

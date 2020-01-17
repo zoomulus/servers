@@ -2,16 +2,37 @@ package com.zoomulus.servers.echo;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
-import lombok.Builder;
-import lombok.Getter;
 
 import com.zoomulus.servers.ServerConnector;
 
-@Builder
 public class EchoServerConnector implements ServerConnector
 {
-    @Getter
     int port;
+
+    public int getPort() {
+        return port;
+    }
+
+    private EchoServerConnector(int port) {
+        this.port = port;
+    }
+
+    static EchoServerConnectorBuilder builder() {
+        return new EchoServerConnectorBuilder();
+    }
+
+    public static class EchoServerConnectorBuilder {
+        int port;
+
+        public EchoServerConnectorBuilder withPort(int port) {
+            this.port = port;
+            return this;
+        }
+
+        public EchoServerConnector build() {
+            return new EchoServerConnector(port);
+        }
+    }
 
     @Override
     public ChannelInitializer<?> getChannelInitializer()

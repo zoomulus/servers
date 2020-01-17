@@ -1,19 +1,19 @@
 package com.zoomulus.servers.http;
 
+import com.zoomulus.servers.http.responder.HttpResponder;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.HttpResponseStatus;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 
-import lombok.extern.slf4j.Slf4j;
-
-import com.zoomulus.servers.http.responder.HttpResponder;
-
-@Slf4j
 public class HttpHandler extends ChannelInboundHandlerAdapter
 {
+    private static Logger log = LoggerFactory.getLogger(HttpHandler.class);
+
     private final HttpResponder responder;
     
     @Inject

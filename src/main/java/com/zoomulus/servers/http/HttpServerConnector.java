@@ -1,5 +1,8 @@
 package com.zoomulus.servers.http;
 
+import com.google.inject.Injector;
+import com.zoomulus.servers.ServerConnector;
+import com.zoomulus.servers.http.responder.DefaultHttpResponder;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpContentCompressor;
@@ -8,17 +11,15 @@ import io.netty.handler.codec.http.HttpServerCodec;
 
 import java.util.Optional;
 
-import lombok.Value;
-
-import com.google.inject.Injector;
-import com.zoomulus.servers.ServerConnector;
-import com.zoomulus.servers.http.responder.DefaultHttpResponder;
-
-@Value
 public class HttpServerConnector implements ServerConnector
 {
-    int port;
-    final Optional<Injector> injector;
+    private int port;
+    private final Optional<Injector> injector;
+
+    private HttpServerConnector(int port, Optional<Injector> injector) {
+        this.port = port;
+        this.injector = injector;
+    }
     
     public static final String CODEC_HANDLER_NAME            = "codec_handler";
     public static final String COMPRESSOR_HANDLER_NAME       = "compressor_handler";
@@ -46,6 +47,10 @@ public class HttpServerConnector implements ServerConnector
                 }
             }
         };
+    }
+
+    public int getPort() {
+        return port;
     }
     
     protected boolean compress()
